@@ -23,7 +23,7 @@ try:
     print(f"✅ Đã xuất {count_dkchuan} dòng từ T_DKCHUAN ra file: {file_dkchuan}")
 
     # --- Export dữ liệu từ T_THUTHAP ---
-    query_thuthap = "SELECT TOP 500 * FROM T_THUTHAP"
+    query_thuthap = "SELECT TOP 10000 * FROM T_THUTHAP"
     df_thuthap = pd.read_sql(query_thuthap, conn)
     count_thuthap = len(df_thuthap)
     file_thuthap = f"T_THUTHAP_export_{count_thuthap}.xlsx"
@@ -31,12 +31,19 @@ try:
     print(f"✅ Đã xuất {count_thuthap} dòng từ T_THUTHAP ra file: {file_thuthap}")
 
     # --- Export dữ liệu từ T_DKCHUANCT ---
-    query_dkchuanct = "SELECT TOP 2000 * FROM T_DKCHUANCT"
+    query_dkchuanct = "SELECT TOP 10000 * FROM T_DKCHUANCT"
     df_dkchuanct = pd.read_sql(query_dkchuanct, conn)
     count_dkchuanct = len(df_dkchuanct)
     file_dkchuanct = f"T_DKCHUANCT_export_{count_dkchuanct}.xlsx"
     df_dkchuanct.to_excel(file_dkchuanct, index=False, engine='openpyxl')
     print(f"✅ Đã xuất {count_dkchuanct} dòng từ T_DKCHUANCT ra file: {file_dkchuanct}")
+
+    query_thuthapct = "SELECT TOP 10000 * FROM T_THUTHAPCT"
+    df_thuthapct = pd.read_sql(query_thuthapct, conn)
+    count_thuthapct = len(df_thuthapct)
+    file_thuthapct = f"T_THUTHAPCT_export_{count_thuthapct}.xlsx"
+    df_thuthapct.to_excel(file_thuthapct, index=False, engine='openpyxl')
+    print(f"✅ Đã xuất {count_thuthapct} dòng từ T_THUTHAPCT ra file: {file_thuthapct}")
 
 except Exception as e:
     print("❌ Lỗi khi xử lý:", e)
